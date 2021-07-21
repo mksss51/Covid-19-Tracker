@@ -1,0 +1,148 @@
+<%- include("partials/header"); -%>
+
+<form action="/vaccination" method="post">
+
+    <h1 class="d-flex justify-content-center">Vaccination</h1>
+
+    <div class="container-fluid">
+        <div class="toggle">
+            <div class="buttonContainer">
+                <div type="button" onclick="pinclick()" class="pinButtoncss toggleButton" id="pinButton">
+                    Search By Pin code  
+                </div>
+                <div type="button" onclick="distclick()" class="districtButtoncss" id="districtButton">
+                    Search By District
+                </div>
+            </div>
+        </div>
+
+        <div id="pincode" >
+            <div class="d-flex justify-content-center">
+                <input type="text" name="pin" id="pin" class="se"  placeholder="Enter the PIN">
+                <button type="button" href="#" class="pin-btn">Search</button>
+            </div>
+
+            <div class="panel panel-default" id="pincodetable">
+                <table id="mydatatable" class="table table-striped table-bordered" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th width="200"></th>
+                            <th width="115"><%= todaydate1 %> </th>
+                            <th width="115"><%= todaydate2 %> </th>
+                            <th width="115"><%= todaydate2 %> </th>
+                            <th width="115"><%= todaydate3 %> </th>
+                            <th width="115"><%= todaydate4 %> </th>
+                            <th width="115"><%= todaydate5 %> </th>
+                            <th width="115"><%= todaydate6 %> </th>
+                            <th width="115"><%= todaydate7 %> </th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <%  for(var i = 0; i < centersData.length; i++) { %>
+                            <tr>
+                                <td><%= centersData[i].name %> , <%= centersData[i].address %>,<%= centersData[i].district_name %>,<%= centersData[i].state_name %>,<%= centersData[i].pincode %></td>
+                                <% if(centersData[i].sessions[i].available_capacity===0){ %>
+                                    <td>NA</td>
+                                <% } else {    %>
+                                <td><%= centersData[i].sessions[i].available_capacity %> </td> 
+                            <% } %>
+                            </tr>
+                        <%  } %>
+                    </tbody>
+                
+                </table>
+            </div>
+
+        </div>
+        <div id="district" style="display: none">
+            <div class="drop-down1">
+                <select class="form-select statelists" aria-label="Default select example" onchange="enable();" id="statelistid" name="statelists">
+                    <option selected>Select State</option>
+                    <% for(var i=0; i<statelist.length; i++) {%> 
+                    <option value="<%= i %> "><%= statelist[i].state_name %> </option>
+                    <% } %> 
+                </select>
+            </div>
+
+             
+            <div class="drop-down2">
+                <select class="form-select" aria-label="Default select example" id="distlistid" disabled>
+                    <option selected>Select District</option>
+                    <% selectedValue = 1 %> 
+                    
+                    <% for(var i=0; i<distlist[selectedValue].length; i++) {%> 
+                        <option value="<%= distlist[selectedValue][i].district_id %> "><%= distlist[selectedValue][i].district_name %> </option>
+                        <% } %>
+                </select>
+            </div>
+
+            <div  class="dist-btn">
+                <button type="submit">Search</button>
+            </div>
+
+            <div class="panel panel-default" style="display: none" id="disttable">
+                <table id="mydatatable" class="table table-striped table-bordered" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th width="200"></th>
+                            <th width="115"><%= todaydate1 %> </th>
+                            <th width="115"><%= todaydate2 %> </th>
+                            <th width="115"><%= todaydate2 %> </th>
+                            <th width="115"><%= todaydate3 %> </th>
+                            <th width="115"><%= todaydate4 %> </th>
+                            <th width="115"><%= todaydate5 %> </th>
+                            <th width="115"><%= todaydate6 %> </th>
+                            <th width="115"><%= todaydate7 %> </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <%  for(var i = 0; i < centersData.length; i++) { %>
+                            <tr>
+                                <td><%= centersData[i].name %></td>
+                            </tr>
+                        <%  } %>
+                    </tbody>
+                
+                </table>
+            </div>
+
+
+        </div>
+        
+    </div>
+
+</form>
+
+
+<script>
+    function pinclick(){
+  document.getElementById("pincode").style.display = "";
+  document.getElementById("district").style.display = "none";
+  document.getElementById("pinButton").classList.add("toggleButton");
+  document.getElementById("districtButton").classList.remove("toggleButton");
+  console.log("clicked");
+}
+function distclick(){
+  document.getElementById("pincode").style.display = "none";
+  document.getElementById("district").style.display = "";
+  document.getElementById("pinButton").classList.remove("toggleButton");
+  document.getElementById("districtButton").classList.add("toggleButton");
+
+}
+
+function getSelectValue()
+{
+    var selectedValue = document.getElementById("statelist").value;
+    console.log(selectedValue);
+}
+getSelectValue();
+
+function enable() {
+    document.getElementById("distlistid").removeAttribute("disabled");
+    document.getElementById("distlistid").innerHTML = "<% selectedValue = 3 %>";
+    
+}
+</script>
+<%- include("partials/footer"); -%>

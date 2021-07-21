@@ -1,0 +1,128 @@
+<%- include("partials/header"); -%>
+
+    <form action="/" method="post">
+
+        <!-- Covid Cases Display -->
+    <div class="container-fluid caseinfocontainer">
+        <div class="row row-cols-1 row-cols-md-4 justify-content-center">
+    
+            <% function formatnos(x)   
+                {
+                    var lastThree = x.substring(x.length-3);
+                    var otherNumbers = x.substring(0,x.length-3);
+                    if(otherNumbers != '')
+                    {
+                        lastThree = ',' + lastThree;
+                    }
+                    var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+                    return res;
+                }
+            %> 
+            <div class="casesinfo" id="totalcases">
+                <h1 class="caseheading">Infected</h1>
+                <h3 class="count" id="totalcasescount">
+                    <%= formatnos(statewiseData[0].confirmed) %>
+                </h3>
+            </div>
+    
+            <div class="casesinfo" id="recovered">
+                <h1 class="caseheading">Recovered</h1>
+                <h3 class="count" id="recoveredcount">
+                    <%= formatnos(statewiseData[0].recovered) %>
+                </h3>
+            </div>
+        
+            <div class="casesinfo" id="deaths">
+                <h1 class="caseheading">Deaths</h1>
+                <h3 class="count" id="deathscount">
+                    <%= formatnos(statewiseData[0].deaths) %>
+                </h3>
+            </div>  
+            <div class="casesinfo" id="vaccinated">
+                <h1 class="caseheading">Vaccinated</h1>
+                <h3 class="count" id="vaccinatedcount">
+                    <%= formatnos(testData.totalindividualsvaccinated) %>
+                </h3>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- State Wise table  -->
+
+        <div class="container stateshow mb-3 mt-3 ">
+
+            <h2 class="stateheading">Statewise Corona Updates</h2>
+
+            <div class="d-flex justify-content-center inputdiv">
+                <input type="text" name="" id="myInput" placeholder="Search Your State" onkeyup="search()">
+            </div>
+            <div class="panel panel-default table-responsive tabledivcss">
+            <table id="mydatatable" class="table table-bordered tablecss" style="width: 100%">
+              <thead>
+                <tr>
+                    <th style="background-color:#f7dfdf">Serial no.</th>
+                    <th style="background-color:#f7dfdf">State Name</th>
+                    <th style="background-color:#61dafb">Confirmed</th>
+                    <th style="background-color:#6c757d">Active</th>
+                    <th style="background-color:#ed5249">Deaths</th>
+                    <th style="background-color:#afd275">Recovered</th>
+                </tr>
+              </thead>
+              <tbody>
+                    <%  for(var i = 1; i < statewiseData.length; i++) { %>
+                        <tr>
+                            <td><%= i %></td>
+                            <td><%= statewiseData[i].state %></td>
+                            <td><%= formatnos(statewiseData[i].confirmed) %></td>
+                            <td><%= formatnos(statewiseData[i].active) %></td>
+                            <td><%= formatnos(statewiseData[i].deaths) %></td>
+                            <td><%= formatnos(statewiseData[i].recovered) %></td>
+                        </tr>
+                    <%  } %>
+                  
+                  
+              </tbody>
+          </table>
+        </div>
+          </div>   
+          
+    </form>
+
+    <script>
+        function search()
+        {
+            let filter = document.getElementById('myInput').value.toUpperCase();
+            let myTable = document.getElementById('mydatatable');
+
+            let tr = myTable.getElementsByTagName('tr');
+
+            for(var i=0; i < tr.length; i++)
+            {
+                let td = tr[i].getElementsByTagName('td')[1];
+
+                if(td){
+                    let textvalue = td.textContent || td.innerHTML;
+
+                    if(textvalue.toUpperCase().indexOf(filter) > -1)
+                    {
+                        tr[i].style.display = "";
+                    }
+                    else
+                    {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        /*  The below Function is created to give comas(,) and format numeric values.
+            This is currently not being implemented anywhere.
+            Don't make any changes in this.
+        */
+
+        
+        
+    </script>
+
+<%- include("partials/footer"); -%>

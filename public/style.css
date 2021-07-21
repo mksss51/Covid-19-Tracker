@@ -1,0 +1,67 @@
+/* Styling for whole body */
+
+*{
+    margin: 0;
+}
+
+/* Navigation bar */
+
+.navbar{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.navbar-brand{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.nav-item{
+    padding: 0 18px;
+}
+
+.nav-link{
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+/* Covid Cases Display */
+
+.casesinfo{
+    text-align: center;
+    margin: 15px;  
+    border-radius: 1rem;  
+}
+.caseheading{
+    padding: 1rem;
+}
+.count{
+    padding: 2rem;
+}
+
+
+
+.about{
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+}
+  
+
+
+
+
+#totalcases{
+    background-color: blue;
+}
+#recovered{
+    background-color: greenyellow;
+}
+#deaths{
+    background-color: red;
+}
+#vaccinated{
+    background-color: yellow;
+}

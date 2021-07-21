@@ -1,0 +1,140 @@
+<%- include("partials/header"); -%>
+
+        <!--Modal Start-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Lead</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="/addlead" method="POST">
+        <div class="modal-body"> 
+  
+            <div class="form-group">
+              <label for="exampleInputEmail1">Store Name</label>
+              <input type="text" name="storeName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Store Name">
+            </div>
+  
+  
+            <div class="form-group">
+              <label for="exampleInputPassword1">District</label>
+              <input type="text" name="district" class="form-control" id="exampleInputPassword1" placeholder="District">
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleInputPassword1">Address</label>
+              <input type="text" name="address" class="form-control" id="exampleInputPassword1" placeholder="Address">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Contact</label>
+              <input type="text" name="contact" class="form-control" id="exampleInputPassword1" placeholder="Contact">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Medicines</label>
+              <input type="text" name="medicine" class="form-control" id="exampleInputPassword1" placeholder="Medicines/Health Kit">
+            </div>
+  
+  
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" name="inserData" class="btn btn-primary">Add</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  
+  
+    <!--Modal End-->
+
+
+
+    <form action="/" method="post">
+
+    
+        <!-- State Wise table  -->
+
+        
+
+        <div class="container mb-3 mt-3">
+            <input type="text" name="" id="myInput" placeholder="Search For Medicine/Oxygen Lead" onkeyup="search()">
+            <button type="button" class="btn btn-dark addLead" data-toggle="modal" data-target="#exampleModal">
+                Add Lead
+              </button>
+            <table id="mydatatable" class="table table-striped table-bordered my-4" style="width: 100%">
+              <thead>
+                  <tr>
+                      <th>Serial no.</th>
+                      <th>Shop Name</th>
+                      <th>District</th>
+                      <th>Address</th>
+                      <th>Contact</th>
+                      <th>Medicine/Oxygen</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  
+                
+              <%  newListItems.forEach(function(item,index){%>
+                    <tr>
+                        <td><%= index+1 %></td>
+                        <td><%= item.name %></td>
+                        <td><%= item.district %></td>
+                        <td><%=item.address%></td>
+                        <td><%=item.contact%></td>
+                        <td><%=item.medicine%></td>
+                    </tr>
+                
+               <% }) %>
+
+
+                 
+                  
+              </tfoot>
+          </table>
+          </div>   
+          
+    </form>
+    <script>
+      function search()
+      {
+          let filter = document.getElementById('myInput').value.toUpperCase();
+          let myTable = document.getElementById('mydatatable');
+
+          let tr = myTable.getElementsByTagName('tr');
+
+          for(var i=0; i < tr.length; i++)
+          {
+              let td = tr[i].getElementsByTagName('td')[5];
+
+              if(td){
+                  let textvalue = td.textContent || td.innerHTML;
+
+                  if(textvalue.toUpperCase().indexOf(filter) > -1)
+                  {
+                      tr[i].style.display = "";
+                  }
+                  else
+                  {
+                      tr[i].style.display = "none";
+                  }
+              }
+          }
+      }
+
+      /*  The below Function is created to give comas(,) and format numeric values.
+          This is currently not being implemented anywhere.
+          Don't make any changes in this.
+      */
+
+      
+      
+  </script>
+   
+
+<%- include("partials/footer"); -%>

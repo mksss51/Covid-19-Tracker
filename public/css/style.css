@@ -1,0 +1,301 @@
+*{
+    margin: 0;
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+/* Navigation bar */
+
+.navbar{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.navbar-brand{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.nav-item{
+    padding: 0 18px;
+}
+
+.nav-link{
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+/* Covid Cases Display */
+
+.caseinfocontainer{
+    padding-top: 80px;
+    padding-bottom: 140px;
+    background-image: url("images");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.casesinfo{
+    text-align: center;
+    margin: 15px;  
+    border-radius: 1rem;  
+}
+.caseheading{
+    padding: 1rem;
+}
+.count{
+    padding: 2rem;
+}
+
+
+
+.about{
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+}
+
+#myInput{
+    border-radius: 25px;
+    border: 2px solid;
+    padding: 10px;
+    justify-content: center;
+    /* margin: auto 50%; */
+    text-align: center;
+    font-size:20px;
+    width: 40rem;
+}
+
+.inputdiv{
+    margin-top: 60px;
+    margin-bottom: 20px;
+    position:static;
+}
+
+input:focus {outline:0;}
+
+
+
+
+#totalcases{
+    background-color: #C2CAD0;
+    box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+}
+#recovered{
+    background-color: #AFD275;
+    box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+}
+#deaths{
+    background-color:#E7717D;
+    box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+}
+#vaccinated{
+    background-color: #C2B9B0;
+    box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+}
+
+/* table styling */
+
+#mydatatable{
+    width: 100%;
+  }
+  
+  /* .statetablecontainer{
+  } */
+  
+  
+  .tabledivcss{
+    box-shadow: 0px 0px 20px rgb(0 0 0 / 15%);
+    margin-top: 60px;
+    margin-bottom: 70px;
+    border-radius: 19px;
+  }
+  table.tablecss {
+    border-collapse: collapse;
+  }
+  table.tablecss td {
+    font-style: bold;
+      font-weight: 400;
+      font-size:large;
+      font-family: 'Old Standard TT', serif;
+  }
+  table.tablecss tr:first-child td {
+    border-top: 0;
+  }
+  table.tablecss tr td:first-child {
+    border-left: 0;
+  }
+  table.tablecss tr:last-child td {
+    border-bottom: 0;
+  }
+  table.tablecss tr td:last-child {
+    border-right: 0;
+  }
+  
+  table.tablecss th {
+    font-style: bold;
+      font-weight: 700;
+      font-size:x-large;
+  }
+  td[colspan="2"]:hover {
+    background: gold;
+  }
+  .stateheading{
+    text-align: center;
+    font-style: bold;
+      font-weight: 700;
+      
+      font-size:xxx-large;
+  }
+  
+  .stateshow{
+    padding-top: 60px;
+  }
+/* Medicine Page */
+
+.addLead{
+    margin-left: 20%;
+    margin-bottom: 10px;
+}
+
+
+/* Vaccination Page Styling */
+
+
+.buttonContainer {
+    background-color: #474e5d;
+    border-radius: 25px;
+    
+    
+    width: 25rem;
+    height: 3rem;
+   
+    
+    
+}
+.pinButtoncss {
+    border: none;
+    background-color: transparent;
+    float: left;
+    height: 100%;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 31px;
+    border-radius: 25px;
+}
+
+.districtButtoncss {
+    border: none;
+    background-color: transparent;
+    float: right;
+    height: 100%;
+    padding: 10px;
+    padding-left: 41px;
+    padding-right: 37px;
+    border-radius: 25px;
+}
+.toggleButton {
+    background-color:	#696969;
+    box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -4px 6px 12px 0px rgba(0,0,0,0.75);
+  
+}
+button:focus {outline:0;}
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+
+
+/* About Page Styling */
+
+.copyright{
+    padding: 50px;
+    margin-top: 150px;
+    text-align: center;
+    background-color: #343A40;
+    color: white;
+    bottom: 0;
+    width: 100%;
+    
+}
+
+
+
+
+
+.se
+{
+    border-radius: 25px;
+    border: 2px solid;
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+    font-size:20px;
+    width: 40rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pin-btn
+{
+    border-radius: 15px;
+    color: black;
+    margin-left: 10px;
+    margin-top: 20px;
+    height: 50px;
+}
+
+.dist-btn
+{
+    border-radius: 15px;
+    color: black;
+    margin-left: 1080px;
+    height: 50px;
+    position: relative;
+    top:-33px;
+}
+
+.drop-down1
+{
+    margin-top: 40px;
+    margin-left: 250px;
+    width: 400px;
+    outline: 0px solid transparent;
+}
+
+.drop-down2
+{
+    margin-left:650px;
+    width:400px;
+    margin-top: -38px;
+}
+
+.toggle
+{
+    margin-top: 20px;
+    margin-left: 400px;
+    margin-bottom: 20px;
+    top:30px;
+}
